@@ -47,14 +47,5 @@ export default {
       store,
     };
   },
-  watch: {
-    store: {
-      handler(oldstore, newStore) {
-        console.log("store changed!");
-        console.log(newStore);
-      },
-      deep: true,
-    },
-  },
 };
 </script>

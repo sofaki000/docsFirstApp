@@ -1,15 +1,12 @@
 <template>
-  <q-page class="q-pa-md flex justify-center items-start">
-    <violations-component
-      v-if="!createViolationForm"
-      :violations="violations"
-    />
+  <q-page class="q-pa-xs flex justify-center items-start">
+    <violation-tabs v-if="!createViolationForm" @tabChanged="tabChanged" />
     <create-violation
       v-if="createViolationForm"
       @onCreateViolationCancel="cancelViolationCreation"
     />
     <q-btn
-      v-if="!createViolationForm"
+      v-if="!createViolationForm && tab != 'violated'"
       color="primary"
       @click="createViolation"
       label="Create violation"
@@ -18,22 +15,32 @@
 </template>
 
 <script>
-import createViolation from "src/components/createViolation.vue";
-import violationsComponent from "src/components/violationsComponent.vue";
+import { store } from "../store/database.js";
+import { getViolations } from "src/boot/firebase";
+import createViolation from "src/components/violations/createViolation.vue";
+import violationTabs from "src/components/violations/violationTabs.vue";
 export default {
-  components: { createViolation, violationsComponent },
+  components: { createViolation, violationTabs },
   data() {
     return {
       createViolationForm: false,
       violations: [],
+      store,
+      tab: "reported",
     };
   },
+  mounted() {
+    getViolations();
+  },
   methods: {
+    tabChanged(tab) {
+      this.tab = tab;
+      console.log(tab);
+    },
     cancelViolationCreation() {
       this.createViolationForm = false;
     },
     createViolation() {
-      console.log("creating violation");
       this.createViolationForm = true;
     },
   },

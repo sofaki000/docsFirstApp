@@ -19,7 +19,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer class="q-pt-lg" v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
         <EssentialLink
           v-for="link in essentialLinks"
