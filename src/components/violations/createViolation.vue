@@ -34,12 +34,18 @@
 </template>
 
 <script>
+import { store } from "src/store/database.js";
 import { useQuasar } from "quasar";
 import { addViolation } from "src/boot/firebase";
 
 export default {
   data() {
-    return { reason: "", description: "" };
+    return { reason: "", description: "", store };
+  },
+  computed: {
+    numberOfViolations() {
+      return Object.keys(this.store.violations).length;
+    },
   },
 
   methods: {
@@ -47,17 +53,18 @@ export default {
       this.$emit("onCreateViolationCancel");
     },
     onSubmitViolation() {
-      const $q = useQuasar();
-      const violation = {
-        id: Math.floor(Math.random() * 100),
-        reason: this.reason,
-        description: this.description,
-        location: "Thessaloniki",
-        date: Date.now(),
-        status: 0,
-      };
-      addViolation(violation);
-      this.$emit("onCreateViolationCancel");
+      if (this.numberOfViolations < 10) {
+        const violation = {
+          id: Math.floor(Math.random() * 100),
+          reason: this.reason,
+          description: this.description,
+          location: "Thessaloniki",
+          date: Date.now(),
+          status: 0,
+        };
+        addViolation(violation);
+        this.$emit("onCreateViolationCancel");
+      }
     },
     onReset() {
       this.reason = " ";
