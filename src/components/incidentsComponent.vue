@@ -20,6 +20,12 @@
           <q-item-label>
             time submitted: {{ getTime(item.date) }}
           </q-item-label>
+          <q-item-label>
+            Description:
+            {{
+              item.description ? item.description : "No description provided"
+            }}</q-item-label
+          >
         </q-item-section>
       </q-item>
     </q-list>
