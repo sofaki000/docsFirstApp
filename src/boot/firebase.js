@@ -21,7 +21,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 export function addIncident(incidentObject) {
-  const incident_id = incidentObject.name;
+  const incident_id = incidentObject.id;
   set(
     ref(database, `${incidents_collection_name}/` + incident_id),
     incidentObject
@@ -57,6 +57,10 @@ export async function deleteViolation(violationObject) {
   const id = violationObject.id;
   remove(ref(database, `${violations_collection_name}/` + id), violationObject);
 }
+export async function deleteIncident(incidentObject) {
+  const id = incidentObject.id;
+  remove(ref(database, `${incidents_collection_name}/` + id), incidentObject);
+}
 
 export async function getIncidents() {
   const dbRef = ref(getDatabase());
@@ -65,6 +69,7 @@ export async function getIncidents() {
     .then((snapshot) => {
       if (snapshot.exists()) {
         incidents = snapshot.val();
+        console.log("FOUND INCIDENTS:");
         console.log(incidents);
       } else {
         console.log("No data available");

@@ -1,8 +1,13 @@
 <template>
   <div>
-    <q-tabs v-model="tab" inline-label class="bg-purple text-white shadow-2">
-      <q-tab name="active" label="Active" />
-      <q-tab name="resolved" label="Past" />
+    <q-tabs
+      v-model="tab"
+      style="background-color: #1976d2"
+      inline-label
+      class="text-white shadow-2"
+    >
+      <q-tab style="background-color: #1976d2" name="active" label="Active" />
+      <q-tab style="background-color: #1976d2" name="resolved" label="Past" />
     </q-tabs>
 
     <q-tab-panels

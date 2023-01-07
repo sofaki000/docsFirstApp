@@ -38,8 +38,8 @@
       <q-tab-panel name="violated">
         <div class="text-h6 q-mb-md">Violated</div>
         <p>All violations that have been issued against you.</p>
-        <div v-if="numberOfViolations == 0">You have made no violations</div>
-        <violation-component v-else :violations="store.violations" />
+        <q-separator class="q-ma-md" />
+        <div>You have made no violations</div>
       </q-tab-panel>
     </q-tab-panels>
   </div>

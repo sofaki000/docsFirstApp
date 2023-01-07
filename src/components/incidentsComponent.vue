@@ -1,8 +1,26 @@
 <template>
-  <div class="q-pa-md" style="max-width: 350px">
-    <q-list dense bordered padding class="rounded-borders">
-      <q-item :key="item.name" v-for="item in incidents" clickable v-ripple>
-        <q-item-section> {{ item.name }} </q-item-section>
+  <div style="width: 100%">
+    <q-list padding class="rounded-borders">
+      <q-item
+        :key="item.name"
+        style="background-color: rgb(229 229 251)"
+        class="flex row justify-start wrap q-mb-sm"
+        v-for="item in incidents"
+        clickable
+        v-ripple
+      >
+        <q-item-section>
+          <q-item-label overline style="font-weight: 900"
+            >Type: {{ item.type ? item.type : "not-specified" }}</q-item-label
+          >
+          <q-separator class="q-ma-sm" />
+          <q-item-label>
+            day submitted: {{ getDaySubmitted(item.date) }}</q-item-label
+          >
+          <q-item-label>
+            time submitted: {{ getTime(item.date) }}
+          </q-item-label>
+        </q-item-section>
       </q-item>
     </q-list>
   </div>
@@ -17,6 +35,22 @@ export default defineComponent({
     incidents: {
       type: Array,
       required: true,
+    },
+  },
+  methods: {
+    getDaySubmitted(timeStamp) {
+      var day = new Date(timeStamp).toLocaleDateString("el-GR");
+      return day;
+    },
+    getTime(timeStamp) {
+      const date = new Date(timeStamp * 1000);
+      var hours = date.getHours();
+      // Minutes part from the timestamp
+      var minutes = "0" + date.getMinutes();
+      // Seconds part from the timestamp
+      var seconds = "0" + date.getSeconds();
+      var formattedTime = hours + ":" + minutes.substr(-2);
+      return formattedTime;
     },
   },
 });
