@@ -63,8 +63,8 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.incidents-list {
+/* .incidents-list {
   height: 440px;
   overflow-y: scroll;
-}
+} */
 </style>
