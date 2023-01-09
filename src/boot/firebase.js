@@ -3,14 +3,13 @@ import { getDatabase, ref, set, child, get, remove } from "firebase/database";
 import { store } from "../store/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDfbLdl6wOGf_3uPYvVbhoqdcWIiIlz6HY",
-  authDomain: "docsfirstdb.firebaseapp.com",
-  projectId: "docsfirstdb",
-  storageBucket: "docsfirstdb.appspot.com",
-  messagingSenderId: "371977791028",
-  appId: "1:371977791028:web:62e6a26b5a34ba948ecc61",
-  databaseURL:
-    "https://docsfirstdb-default-rtdb.europe-west1.firebasedatabase.app/",
+  apiKey: "**************************",
+  authDomain: "**************************",
+  projectId: "**************************",
+  storageBucket: "**************************",
+  messagingSenderId: "**************************",
+  appId: "**************************",
+  databaseURL: "**************************",
 };
 
 const incidents_collection_name = "incidents";
