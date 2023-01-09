@@ -1,6 +1,10 @@
 <template>
   <q-page class="flex justify-center landing-page">
-    <q-img src="bg-image-doctor.png" fit="cover" />
+    <q-img
+      v-if="!openCreateIncidentForm"
+      src="bg-image-doctor.png"
+      fit="cover"
+    />
     <q-btn
       v-if="!openCreateIncidentForm"
       color="primary"
