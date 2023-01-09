@@ -1,9 +1,9 @@
 <template>
-  <div style="width: 100%">
+  <div style="width: 100%" class="incidents-list">
     <q-list padding class="rounded-borders">
       <q-item
         :key="item.name"
-        style="background-color: rgb(229 229 251)"
+        style="background-color: rgb(187, 211, 235)"
         class="flex row justify-start wrap q-mb-sm"
         v-for="item in incidents"
         clickable
@@ -61,3 +61,10 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.incidents-list {
+  height: 440px;
+  overflow-y: scroll;
+}
+</style>

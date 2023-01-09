@@ -1,10 +1,11 @@
 <template>
-  <q-page class="flex justify-center">
+  <q-page class="flex justify-center landing-page">
+    <q-img src="bg-image-doctor.png" fit="cover" />
     <q-btn
       v-if="!openCreateIncidentForm"
       color="primary"
       @click="createIncident"
-      style="max-height: 40px"
+      style="max-height: 40px; align-self: center; width: 56%"
       class="q-mt-xl"
       label="Create incident"
     />
@@ -42,3 +43,12 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 617px;
+  justify-content: start;
+}
+</style>
